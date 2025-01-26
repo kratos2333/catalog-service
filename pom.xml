@@ -27,7 +27,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -40,6 +40,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,6 +57,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <env>
+<!--                            todo: note have to specify 17 to build the image: mvn spring-boot:build-image -DskipTests-->
+                            <BP_JVM_VERSION>17</BP_JVM_VERSION>
+                        </env>
+                    </image>
+                </configuration>
             </plugin>
         </plugins>
     </build>
